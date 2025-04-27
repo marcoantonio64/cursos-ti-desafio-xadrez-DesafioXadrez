@@ -1,32 +1,35 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+#define TAMANHO_TABULEIRO 8
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+// Definir tipos de peças
+typedef enum { VAZIO, PEÃO, TORRE, CAVALO, BISPO, RAINHA, REI } TipoPeca;
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+// Definir cores das peças
+typedef enum { BRANCO, PRETO } Cor;
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+// Estrutura para uma peça de xadrez
+typedef struct {
+    TipoPeca tipo;
+    Cor cor;
+} Peca;
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+// Função para inicializar o tabuleiro
+void inicializarTabuleiro(Peca tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO]) {
+    // Inicializa com peças brancas na parte superior e pretas na parte inferior
+    for (int i = 0; i < TAMANHO_TABULEIRO; i++) {
+        for (int j = 0; j < TAMANHO_TABULEIRO; j++) {
+            tabuleiro[i][j].tipo = VAZIO;
+        }
+    }
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-    return 0;
-}
+    // Peças brancas na primeira linha
+    tabuleiro[0][0] = (Peca){TORRE, BRANCO};
+    tabuleiro[0][1] = (Peca){CAVALO, BRANCO};
+    tabuleiro[0][2] = (Peca){BISPO, BRANCO};
+    tabuleiro[0][3] = (Peca){RAINHA, BRANCO};
+    tabuleiro[0][4] = (Peca){REI, BRANCO};
+    tabuleiro[0][5] = (Peca){BISPO, BRANCO};
+    tabuleiro[0][6] = (Peca){CAVALO, BRANCO};
+    tabuleiro[0][7] = (Peca
